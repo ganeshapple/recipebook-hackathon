@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recipe Book App</title>
+</head>
+<script>
+    function displayRandomDivs()
+    {
+      var allDivs = Array.from(document.querySelectorAll('div:not([style*="display: none"])'));
+      if (allDivs.length > 4)
+      {
+        allDivs.forEach(function(div)
+        {
+          div.style.display = 'none';
+        });
+        shuffle(allDivs);
+        for (var i = 0; i < 4; i++)
+        {
+          allDivs[i].style.display = 'block';
+        }
+      }
+    }
+    window.addEventListener('load', displayRandomDivs);  
+    function shuffle(array)
+    {
+      for (var i = array.length - 1; i > 0; i--)
+      {
+        var j = Math.floor(Math.random() * (i + 1)); 
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    function searchRecipes()
+    {
+      var input, filter, divs, recipeNames, i;
+      input = document.getElementById('searchInput');
+      filter = input.value.toUpperCase();
+      divs = document.getElementById('recipeContainer').getElementsByTagName('div');
+      for (i = 0; i < divs.length; i++)
+      {
+        recipeNames = divs[i].getElementsByTagName('b')[0];
+        if (recipeNames)
+        {
+          if (recipeNames.innerHTML.toUpperCase().indexOf(filter) > -1)
+          {
+            divs[i].style.display = "";
+          } else
+          {
+            divs[i].style.display = "none";
+          }
+        }
+      }
+    }
+</script>
+<center><h1 style="color: aliceblue; background-color: darkblue;">Recipe Book App</h1></center>
+<body style="background-color:whitesmoke;"id="recipies">
+    <div style="background-color: bisque;">
+        <img src="im1.png"> <b>Fresh and Simple Swai Ceviche</b>
+        <button><a href="recipe1.html">VIEW RECIPE</a></button>
+    </div>
+    <div style="background-color: aquamarine;">
+        <img src="im2.png"> <b>Edamame Hummus</b>
+        <button><a href="recipe2.html">VIEW RECIPE</a></button>
+    </div>
+    <div style="background-color: cornsilk;">
+        <img src="im3.png"> <b>Chicken Parmesan Patty-Eat As A Burger Or On Pasta</b>
+        <button><a href="recipe3.html">VIEW RECIPE</a></button>
+    </div>
+    <div style="background-color: dimgray;">
+        <img src="im4.png"> <b>Curried Butternut Squah and Apple Soup</b>
+        <button><a href="recipe4.html">VIEW RECIPE</a></button>
+    </div>
+    <div style="background-color: lightcyan;">
+        <img src="im5.png"> <b>Creamy Shromp Bisque</b>
+        <button><a href="recipe5.html">VIEW RECIPE</a></button>
+    </div>
+    <div style="background-color: lightslategrey;">
+        <img src="img6.jpg" width="150px" height="150px"> <b>Chicken Biryani</b>
+        <button><a href="recipe6.html">VIEW RECIPE</a></button>
+    </div>
+    <div style="background-color: peachpuff;">
+        <img src="img7.jpeg" width="150px" height="150px"> <b>Mutton Biryani</b>
+        <button><a href="recipe7.html">VIEW RECIPE</a></button>
+    </div>
+    <div style="background-color: beige;">
+        <img src="img8.jpeg" width="150px" height="150px"> <b>Fish Curry</b>
+        <button><a href="recipe8.html">VIEW RECIPE</a></button>
+    </div>
+</body>
+</html>
